@@ -17,7 +17,7 @@ const port = 3030
 /* ejemplo sin modularizar 
         rutas, controladores*/
 app.get ("/",(req,res)=>{
-    res.send ("Pagina Principal")
+    res.send ("Colección de albumes")
 })
 
 app.use("/cantantes", cantantesRouter);
