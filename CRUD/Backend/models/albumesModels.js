@@ -23,6 +23,11 @@ const Album = db.define('Album', {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    status: {
+        type: DataTypes.ENUM('active', 'inactive'), // Campo status con valores restringidos
+        allowNull: false,
+        defaultValue: 'active', // Valor predeterminado es 'active'
+    },
     createdAt: {
       type: DataTypes.DATE,
       defaultValue: Sequelize.NOW,

@@ -5,8 +5,8 @@ const Cantante = require('../models/cantantesModels');
 // Crear un álbum
 const crearAlbum = async (req, res) => {
   try {
-    const { id_cantante, nombre_album, año_lanzamiento, genero } = req.body;
-    await Album.create({ id_cantante, nombre_album, año_lanzamiento, genero });
+    const { id_cantante, nombre_album, año_lanzamiento, genero, status } = req.body;
+    await Album.create({ id_cantante, nombre_album, año_lanzamiento, genero, status: status || 'active', });
     res.json("Álbum creado correctamente");
   } catch (error) {
     res.json({ message: error.message });
