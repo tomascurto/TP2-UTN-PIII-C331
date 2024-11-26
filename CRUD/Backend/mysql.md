@@ -18,6 +18,7 @@ CREATE TABLE album (
     genero VARCHAR(255) NOT NULL,
     createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    status ENUM('active', 'inactive') NOT NULL DEFAULT 'active',
     FOREIGN KEY (id_cantante) REFERENCES cantantes(id)
 );
 
