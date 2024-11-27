@@ -1,6 +1,20 @@
 const {Sequelize} = require ("sequelize")
 
-/* nombre de la db- user - contraseña - {donde esta alojada, lenguaje, puerto} */
+/* REEMPLAZAR 
+"music_db","root","",{
+    host : "localhost",
+    dialect:"mysql",
+    port: 3306}
+
+por
+
+nombre de la base de datos, user,contraseña,{
+    host : "localhost",
+    dialect:"mysql",
+    port: puerto}
+
+    */
+   
 const db = new Sequelize ("music_db","root","",{
     host : "localhost",
     dialect:"mysql",

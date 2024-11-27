@@ -3,8 +3,8 @@ const { crearCantante, traerCantantes, traerCantante, borrarCantante, actualizar
 
 const router = express.Router();
 
-router.get("/", traerCantantes);
-router.get("/:id", traerCantante);
+router.get("/", traerCantantes); 
+router.get("/:id", traerCantante); 
 router.post("/", crearCantante);
 router.put("/:id", actualizarCantante);
 router.delete("/:id", borrarCantante);

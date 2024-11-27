@@ -24,9 +24,9 @@ const Album = db.define('Album', {
       allowNull: false,
     },
     status: {
-        type: DataTypes.ENUM('active', 'inactive'), // Campo status con valores restringidos
+        type: DataTypes.ENUM('active', 'inactive'), // Campo status con valores restringidos a active e inactive
         allowNull: false,
-        defaultValue: 'active', // Valor predeterminado es 'active'
+        defaultValue: 'active', // Valor predeterminado 'active'
     },
     createdAt: {
       type: DataTypes.DATE,

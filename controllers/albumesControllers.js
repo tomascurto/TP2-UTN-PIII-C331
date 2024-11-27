@@ -19,7 +19,7 @@ const traerAlbums = async (req, res) => {
     // Obtener parámetros de la consulta
     const { page = 1, limit, sort = 'ASC', genero, status } = req.query;
 
-    // Convertir los valores a los tipos correctos
+    // Orden 
     const order = [['createdAt', sort.toUpperCase() === 'DESC' ? 'DESC' : 'ASC']];
 
     // Filtros
@@ -30,28 +30,29 @@ const traerAlbums = async (req, res) => {
     // Si no se especifica un límite, devolver todos los álbumes sin paginación
     const queryOptions = {
       where: where,
-      include: {
+      include: { // agrega al pedido los datos del cantante asociado a la id_cantante
         model: Cantante,
-        as: 'cantante',  // Asegúrate de usar el alias definido en la asociación
-        attributes: ['nombre', 'apellido'],  // Campos que quieres obtener del cantante
+        as: 'cantante',  
+        attributes: ['nombre', 'apellido'], 
       },
       order: order,  // Ordenar por createdAt
     };
 
+    // Si se especifica un límite agrega la paginación
     if (limit) {
-      const offset = (page - 1) * limit;
-      queryOptions.limit = parseInt(limit);  // Limitar la cantidad de resultados por página
+      const offset = (page - 1) * limit;     // Especifica por cuanto se desplazaran los resultados
+      queryOptions.limit = parseInt(limit);  // Limita la cantidad de resultados por página
       queryOptions.offset = offset;          // Desplazamiento para la paginación
     }
 
     // Buscar álbumes con los filtros y paginación si aplica
     const albums = await Album.findAndCountAll(queryOptions);
 
-    // Si se especifica paginación, calcular el total de páginas
+    // Si se especifica limite, calcular el total de páginas
     if (limit) {
       const totalPages = Math.ceil(albums.count / limit);
 
-      // Responder con los álbumes y metadatos de paginación
+      // Responder con los álbumes y datos de paginación
       return res.json({
         data: albums.rows,
         pagination: {

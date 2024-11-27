@@ -3,8 +3,8 @@ const app = express()
 const cors = require ("cors")
 const cantantesRouter = require("./routes/cantantesRouter")
 const albumesRouter = require("./routes/albumesRouter")
-const db = require ("./data/db.js")
-require('./models/relaciones');  // Importa las relaciones
+const db = require ("./data/db.js") 
+require('./models/relaciones');  // Importa la relacion entre albumes y cantantes
 
 
 
@@ -14,12 +14,12 @@ app.use(express.json()) // analiza los request
 const port = 3030
 
 
-/* ejemplo sin modularizar 
-        rutas, controladores*/
+// HOME
 app.get ("/",(req,res)=>{
     res.send ("Colección de albumes")
 })
 
+// Envia los request a sus respectivas rutas
 app.use("/cantantes", cantantesRouter);
 app.use("/albumes", albumesRouter);
 

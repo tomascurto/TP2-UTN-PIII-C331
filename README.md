@@ -4,6 +4,9 @@
 
 # Trabajo Práctico Parte 2 — Node.js Express
 
+**AL FINAL ESTA NUESTROS COMENTARIOS**
+Trabajo hecho por Tomás Curto Eivers y Fausto Forcherio
+
 ## Objetivo
 
 El objetivo de este trabajo práctico es que los estudiantes desarrollen una API utilizando Node.js, Express, MySQL y Sequelize, demostrando sus conocimientos en el manejo del backend, estructura de proyectos y operaciones CRUD.
@@ -187,3 +190,72 @@ Por este motivo, vamos a valorar mucho este aspecto. Siéntase libre de utilizar
 ## **Fecha de Entrega:**
 
 27/11
+
+
+**QUE HACE**
+Es una API que funciona como una colección de albumes de cantantes.
+Permite agregar, modificar o eliminar albumes, ademas de leer todos los albumes o leer uno por id,
+ordenar por creacion en la base de datos, filtrar por genero o filtrar por activo o inactivo.
+Ademas la vista de albumes puede ser pedida con paginación.
+Tambien permite agregar, modificar, eliminar, leer a todos o por id a los cantantes.
+Cada cantante puede tener varios albumes pero un album debe tener un solo cantante.
+
+**Requisitos:**
+- Tener mysqlWorkbench
+- Tener Xampp
+- Entorno de ejecución node.js
+- Tener instalado los paquetes sequelize, express y mysql2 en el proyecto
+- Opcionalmente tener extension ThunderClient (para probar con mayor comodidad).
+
+1) Iniciar MySQL en xampp
+2) Crear base de datos en MySQL con el codigo de "mysql.md"
+3) Reemplazar por su usuario, contraseña y puerto en /data/db.js
+4) Ejecutar en una nueva terminal el archivo index.js con node.js
+5) Ejecutar los endpoints a gusto
+
+**Endpoints (Reemplazar lo que está entre astericos con lo que pide):**
+
+Titulo del proyecto:
+http://localhost:3030/
+
+Álbumes:
+Para traer todos los albumes filtrados o no (con get):
+http://localhost:3030/albumes
+http://localhost:3030/albumes?page=1&limit=1&sort=asc&genero=pop&status=active (manejar filtros a su antojo)
+
+Para crear un album con post:
+http://localhost:3030/albumes
+
+
+Para ver 1 solo album, borrar un album o actualizar un album poner (get, put, delete):
+http://localhost:3030/albumes/*ID*
+
+
+Cantantes:
+Para traer todos los cantantes con get:
+http://localhost:3030/cantantes
+
+Para crear un cantante con post:
+http://localhost:3030/cantantes
+
+Para ver 1 solo cantante, borrar un cantante o actualizar un cantante poner (get, update, delete):
+http://localhost:3030/cantantes/*ID*
+
+**Ejemplos en formato JSON**
+Para crear o actualizar un cantante se tienen que insertar este JSON ya que el id del cantante, el createdAt y updateAt son automáticos:
+  {
+    "nombre": "Kendrick",
+    "apellido": "Lamar"
+  }
+
+Para crear o actualizar un album se tienen que insertar este JSON ya que el id del album, el createdAt y updateAt son automáticos junto con los datos del cantante asociado:
+   {
+      "id_cantante": 1,
+      "nombre_album": "Ventanita del amor",
+      "año_lanzamiento": 2002,
+      "genero": "Cumbia",
+      "status": "inactive"
+    }
+ACLARACION: en caso de no poner status, por defecto se inicia como activo
+
+

@@ -1,7 +1,6 @@
 const Cantante = require('./cantantesModels');  // Importar el modelo Cantante
 const Album = require('./albumesModels');      // Importar el modelo Album
 
-// Definir las relaciones en este archivo
 
 // Un cantante tiene muchos álbumes (Relación uno a muchos)
 Cantante.hasMany(Album, {
